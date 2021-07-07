@@ -1,4 +1,4 @@
-# Pollen Solutions Standalone Project
+# Pollen Solutions - Standalone project
 
 - [Features](#Features)
 - [Installation](#Installation)
@@ -9,7 +9,7 @@
 ## Installation
 
 ```sh
-composer create-project -s dev --repository-url https://composer.presstify.com/pollen-solutions pollen-solutions/skeleton htdocs
+composer create-project pollen-solutions/skeleton project_name
 ```
 
 ## Configuration
