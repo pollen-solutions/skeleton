@@ -2,12 +2,14 @@
   "name": "pollen-solutions/skeleton",
   "description": "Pollen Solution Standalone project skeleton.",
   "keywords": [
-    "boilerplate",
-    "wordpress"
+    "pollen-solutions",
+    "skeleton",
+    "standalone",
+    "project"
   ],
   "type": "project",
   "license": "MIT",
-  "time": "2021-07-09",
+  "time": "2021-08-12",
   "authors": [
     {
       "name": "Jordy Manner",
@@ -19,6 +21,7 @@
     "ext-json": "*",
     "composer/installers": "^1.11",
     "pollen-solutions/asset": "^1.0",
+    "pollen-solutions/console": "^1.0",
     "pollen-solutions/debug": "^1.0",
     "pollen-solutions/kernel": "^1.0",
     "pollen-solutions/view-extends": "^1.0",
