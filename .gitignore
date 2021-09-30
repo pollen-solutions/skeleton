@@ -9,10 +9,6 @@
 ## CERBOT
 /.well-known/
 
-## BINARIES
-/bin/wp-cli.phar
-/bin/composer.phar
-
 ## PACKAGES
 ### COMPOSER
 /vendor/
@@ -26,4 +22,3 @@
 ## ENV
 /.env.local
 /.env.*.local
-
