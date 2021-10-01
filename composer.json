@@ -9,7 +9,7 @@
   ],
   "type": "project",
   "license": "MIT",
-  "time": "2021-09-30",
+  "time": "2021-10-01",
   "authors": [
     {
       "name": "Jordy Manner",
@@ -19,7 +19,6 @@
   "require": {
     "php": "^7.4 || ^8.0",
     "ext-json": "*",
-    "ext-pdo": "*",
     "composer/installers": "^1.11",
     "pollen-solutions/asset": "^1.0",
     "pollen-solutions/console": "^1.0",
