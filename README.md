@@ -22,8 +22,8 @@ composer create-project pollen-solutions/skeleton project_name
 
 ## Environment configuration
 
-During the installation process, the file ```.env.example``` is copied to ```.env```. 
-This file contains all required default configuration.
+During the installation process, the file ```.env.example``` is copied to ```.env```. This file contains all required
+default configuration.
 
 ```dotenv
 # ENVIRONMENT
@@ -77,8 +77,25 @@ DB_USERNAME=root
 DB_PASSWORD=${DB_USER}
 ```
 
-Pollen solutions suite uses the **vlucas/phpdotenv** library to work. More information
-on its [github repository](https://github.com/vlucas/phpdotenv).
+### .env merge vars
+
+In some special cases, you may need to access application data to complete the
+configuration of your environment variables and the merge vars could help you.
+
+The paths of the application are natively available :
+
+- ```%%app.base_dir%%```: Absolute path to the root directory of the app.
+
+- ```%%app.public_dir%%```: Absolute path to the public directory of the app.
+
+Example of usage :
+
+```dotenv
+DATABASE_URL=sqlite:///%%app.base_dir%%/var/database.sqlite
+```
+
+Pollen solutions suite uses the **vlucas/phpdotenv** library to work. More information on
+its [github repository](https://github.com/vlucas/phpdotenv).
 
 ## Serve the app
 
