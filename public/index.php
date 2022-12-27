@@ -1,21 +1,18 @@
-<?php
+<?php declare(strict_types=1);
 
-use App\App;
+use Pollen\Kernel\Http\HttpKernelInterface;
 use Pollen\Http\Request;
-use Pollen\Kernel\KernelInterface;
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 defined('START_TIME') ?: define('START_TIME', microtime(true));
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-$app = new App(dirname(__DIR__));
+/** @var \Pollen\Kernel\ApplicationInterface $app */
+$app = require __DIR__.'/../bootstrap/app.php';
 
-$kernel = $app->get(KernelInterface::class);
-$response = $kernel->handle($request = Request::getFromGlobals());
+if ($kernel = $app->resolve(HttpKernelInterface::class)) {
+    $response = $kernel->handle($request = Request::getFromGlobals()->psr());
 
-$kernel->send($response);
-$kernel->terminate($request, $response);
-
+    $kernel->send($response);
+    $kernel->terminate($request, $response);
+}
