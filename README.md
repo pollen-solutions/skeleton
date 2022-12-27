@@ -8,22 +8,90 @@
 
 ## Table of contents
 
-- [Features](#Features)
-- [Installation](#Installation)
-- [Configuration](#Configuration)
+- [Features](#features)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Directory structure](#directory-structure)
 
 ## Features
 
+The Pollen solutions **Skeleton** component embeds :
+
+- [Composer](https://getcomposer.org/), as package manager for PHP libraries.
+- [ViteJS](https://vitejs.dev/) as assets bundler and responsible for compiling, transpilating, versioning,
+  optimizing ...
+- [Pollen solutions components suite](https://github.com/pollen-solutions) that includes :
+    - A dependency injection container
+    - A routing system
+    - A templating library
+    - An asset manager and injector
+    - An expandable command line interface
+    - An event manager
+    - ...
+- A preconfigured docker environment
+- ... And a lot of other kinds of magic !
+
+To try it is already to contribute, you are welcome !
+
 ## Installation
 
+### Standard installation
+
+#### Prerequisite
+
+- **PHP** must be installed on your machine [see details](https://www.php.net/manual/install.php).
+- **Composer** must be installed on your machine [see details](https://getcomposer.org/download/).
+
+#### Launch installation
+
 ```sh
-composer create-project pollen-solutions/skeleton project_name
+composer create-project pollen-solutions/skeleton your-app-name
 ```
 
-## Environment configuration
+#### Serve the app
 
-During the installation process, the file ```.env.example``` is copied to ```.env```. This file contains all required
-default configuration.
+Serve your application using
+the [built-in web server in PHP](https://www.php.net/manual/en/features.commandline.webserver.php) (or your server of
+choice) from the ```public``` directory:
+
+```sh
+php -S 127.0.0.1:8000 -t public
+```
+
+Visit the application in the browser:
+
+- [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+### Docker installation
+
+#### Prerequisite
+
+- Docker must be installed on your machine [see details](https://docs.docker.com/get-docker/)
+
+#### Launch installation
+
+Clone projet from the [github repository](https://github.com/pollen-solutions/skeleton)
+
+```sh
+git clone git@github.com:pollen-solutions/skeleton.git
+```
+
+Launch application builder
+
+```sh
+bin/app.build
+```
+
+Visit the application in the browser:
+
+- [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## Configuration
+
+### Environment configuration
+
+During the installation process, the file ```.env.example``` is copied to ```.env```.
+This file contains all required default configuration.
 
 ```dotenv
 # ENVIRONMENT
@@ -36,23 +104,18 @@ APP_TIMEZONE=Europe/Paris
 DATABASE_URL=sqlite:///%%app.base_dir%%/var/database.sqlite
 ```
 
-You can directly edit this file, but the best practice is to create a new ```.env.local``` file that will contain all of
-the configuration attributes specific to your installation.
+### .env.local
 
+To customize your application configuration, you can directly edit the ```.env``` file, but the best practice is to
+create a new ```.env.local``` file that will contain all the configuration attributes specific to your installation.
 Through the ```.env.local``` file you can if necessary override an environment value declared in the ```.env``` file or
 define new ones :
 
 ```dotenv
 # DATABASE
-DATABASE_URL=null
-DB_DRIVER=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=pollen-solutions
-DB_USERNAME=root
-DB_PASSWORD=
+DATABASE_URL=mysql://root:root@mysql:3306/pollen
 
-# REDIS
+#REDIS
 REDIS_CLIENT=phpredis
 REDIS_HOST=127.0.0.1
 ```
@@ -67,12 +130,14 @@ BOOL_VAR=true
 NULL_VAR=null
 ```
 
-You can use another previously defined environment variable like this :
+You can use another existing global or previously defined environment variable like this :
 
 ```dotenv
-DB_USERNAME=root
-DB_PASSWORD=${DB_USER}
+DB_USERNAME=${MYSQL_USER}
+DB_PASSWORD=${MYSQL_PASSWORD}
 ```
+
+Note that, for security reasons, global environnement variables couldn't be overridden.
 
 ### .env merge vars
 
@@ -91,19 +156,57 @@ Example of usage :
 DATABASE_URL=sqlite:///%%app.base_dir%%/var/database.sqlite
 ```
 
-Pollen solutions suite uses the **vlucas/phpdotenv** library to work. More information on
-its [github repository](https://github.com/vlucas/phpdotenv).
+Pollen solutions suite uses the **vlucas/phpdotenv** library to work. More information
+on its [github repository](https://github.com/vlucas/phpdotenv).
 
-## Serve the app
+## Directory structure
 
-Serve your application using
-the [built-in web server in PHP](https://www.php.net/manual/en/features.commandline.webserver.php) (or your server of
-choice) from the ```public``` directory:
+The **Skeleton** component is a micro-framework.
+Like other solutions of this type, it is opinionated and its directory structure is intended to provide a starting point
+for creating a complete web application.
 
-```shell
-php -S 127.0.0.1:8000 -t public
+### The Root directory structure
+
+```
+|–– bin
+|–– bootstrap
+|–– config
+|–– docker
+|–– docs
+|–– (node_modules)
+|–– public
+|–– resources
+    |–– assets
+    |–– views
+|–– src
+|–– tests
+|–– var
+|–– (vendor)
 ```
 
-Visit the application in the browser:
+### The Root directory
 
-- [http://127.0.0.1:8000](http://127.0.0.1:8000)
+#### src
+
+The ```src``` directory contains the core PHP code of your application.
+
+#### resources
+
+The ```resources``` directory contains the templating code. This included views and css, js, fonts, images and all other
+assets files.
+
+#### public
+
+The ```public``` directory contains the index.php file, which is the entry point for all requests entering your
+application and configures autoload.
+
+This directory also houses the build assets such css, js, fonts, images and all other assets files.
+
+#### config
+
+The ```config``` directory, as the name implies, contains all of your application's PHP configuration files.
+
+#### docs
+
+The ```docs``` directory contains the complete documentation of the micro framework and its components.
+Work in progress ;)

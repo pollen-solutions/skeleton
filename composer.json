@@ -9,7 +9,7 @@
   ],
   "type": "project",
   "license": "MIT",
-  "time": "2021-10-01",
+  "time": "2022-12-27",
   "authors": [
     {
       "name": "Jordy Manner",
@@ -19,11 +19,12 @@
   "require": {
     "php": "^7.4 || ^8.0",
     "ext-json": "*",
-    "composer/installers": "^1.11",
+    "composer/installers": "^1.12",
     "pollen-solutions/asset": "^1.0",
     "pollen-solutions/console": "^1.0",
     "pollen-solutions/database": "^1.0",
     "pollen-solutions/debug": "^1.0",
+    "pollen-solutions/log": "^1.0",
     "pollen-solutions/kernel": "^1.0",
     "pollen-solutions/view-extends": "^1.0",
     "vlucas/phpdotenv": "^5.3"
@@ -42,11 +43,14 @@
       "App\\Test\\": "tests"
     }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "config": {
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true
+    }
   },
   "scripts": {
     "post-root-package-install": [
