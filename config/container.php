@@ -8,6 +8,9 @@ use Pollen\Console\ConsoleInterface;
 use Pollen\Console\ConsoleServiceProvider;
 use Pollen\Container\Container;
 use Pollen\Container\ContainerInterface;
+use Pollen\Database\DatabaseManager;
+use Pollen\Database\DatabaseManagerInterface;
+use Pollen\Database\DatabaseServiceProvider;
 use Pollen\Debug\DebugManager;
 use Pollen\Debug\DebugManagerInterface;
 use Pollen\Debug\DebugServiceProvider;
@@ -51,6 +54,7 @@ return static function (ContainerInterface $container, ApplicationInterface $app
     // -- Components
     $container->addServiceProvider(new AssetServiceProvider());
     $container->addServiceProvider(new ConsoleServiceProvider());
+    $container->addServiceProvider(new DatabaseServiceProvider());
     $container->addServiceProvider(new DebugServiceProvider());
     $container->addServiceProvider(new EventServiceProvider());
     $container->addServiceProvider(new FakerServiceProvider());
@@ -80,6 +84,11 @@ return static function (ContainerInterface $container, ApplicationInterface $app
         ConsoleInterface::class         => [
             'console',
             Console::class,
+        ],
+        DatabaseManagerInterface::class    => [
+            'db',
+            'database',
+            DatabaseManager::class,
         ],
         DebugManagerInterface::class    => [
             'debug',
