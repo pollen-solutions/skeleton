@@ -10,8 +10,17 @@
 
 - [Features](#features)
 - [Installation](#installation)
+  - [Standard installation](#standard-installation)
+  - [Docker installation](#docker-installation)
 - [Configuration](#configuration)
+  - [Environment configuration](#environment-configuration)
+  - [Customize a local environment configuration](#customize-a-local-environment-configuration)
+  - [Environment Variable Types](#environment-variables-types)
+  - [Environment variable mapping](#environment-variable-mapping)
+  - [Use application variable](#use-application-variable)
 - [Directory structure](#directory-structure)
+  - [The Root directory structure](#the-root-directory-structure)
+  - [The Root directory details](#the-root-directory-details)
 
 ## Features
 
@@ -70,7 +79,7 @@ Visit the application in the browser:
 
 #### Launch installation
 
-Clone projet from the [github repository](https://github.com/pollen-solutions/skeleton)
+Clone projet from the [Github repository](https://github.com/pollen-solutions/skeleton)
 
 ```sh
 git clone git@github.com:pollen-solutions/skeleton.git
@@ -107,7 +116,7 @@ APP_TIMEZONE=Europe/Paris
 DATABASE_URL=sqlite:///%%app.base_dir%%/var/database.sqlite
 ```
 
-### .env.local
+### Customize a local environment configuration
 
 To customize your application configuration, you can directly edit the ```.env``` file, but the best practice is to
 create a new ```.env.local``` file that will contain all the configuration attributes specific to your installation.
@@ -123,7 +132,7 @@ REDIS_CLIENT=phpredis
 REDIS_HOST=127.0.0.1
 ```
 
-### .env syntax
+### Environment variables types
 
 ```dotenv
 STRING_VAR=string
@@ -132,6 +141,8 @@ EMPTY_STRING=
 BOOL_VAR=true
 NULL_VAR=null
 ```
+
+### Environment variable mapping
 
 You can use another existing global or previously defined environment variable like this :
 
@@ -142,9 +153,9 @@ DB_PASSWORD=${MYSQL_PASSWORD}
 
 Note that, for security reasons, global environnement variables couldn't be overridden.
 
-### .env merge vars
+### Use application variable
 
-In some special cases, you may need to access application data to complete the
+In some special cases, you may need to access application variable to complete the
 configuration of your environment variables and the merge vars could help you.
 
 The paths of the application are natively available :
@@ -187,7 +198,7 @@ for creating a complete web application.
 |–– (vendor)
 ```
 
-### The Root directory
+### The Root directory details
 
 #### src
 
