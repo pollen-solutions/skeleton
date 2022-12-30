@@ -28,11 +28,7 @@ Pollen comes with a ready-to-use environment through Docker technology.
 Bifish is a light-weight command-line interface for interacting with Docker development environment.
 It draws on the work of Taylor Otwell and his team on [Laravel Sail](https://laravel.com/docs/sail).
 
-<<<<<<< Updated upstream
-### Configuring an alias (optional)
-=======
 ### Configuring a Shell alias
->>>>>>> Stashed changes
 
 By default, bigfish command-line are invoked using the ```bin/bigfish``` script.
 Instead of repeatedly typing this instruction, configure a Bash alias may be a good alternative.
