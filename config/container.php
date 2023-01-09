@@ -44,7 +44,6 @@ use Pollen\ViewExtends\ViewExtendsServiceProvider;
 use Psr\Container\ContainerInterface as PsrContainer;
 use Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcher;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
 
 return static function (ContainerInterface $container, ApplicationInterface $app) {
