@@ -23,6 +23,8 @@ use Pollen\Faker\FakerServiceProvider;
 use Pollen\Http\Request;
 use Pollen\Http\RequestInterface;
 use Pollen\Kernel\ApplicationInterface;
+use Pollen\Kernel\ApplicationEmitterInterface;
+use Pollen\Kernel\ApplicationRequestHandlerInterface;
 use Pollen\Kernel\Http\HttpKernel;
 use Pollen\Kernel\Http\HttpKernelInterface;
 use Pollen\Http\HttpServiceProvider;
@@ -115,7 +117,9 @@ return static function (ContainerInterface $container, ApplicationInterface $app
         RouterInterface::class          => [
             'router',
             Router::class,
-            RequestHandlerInterface::class,
+            // Required by kernel
+            ApplicationEmitterInterface::class,
+            ApplicationRequestHandlerInterface::class
         ],
         RequestInterface::class         => [
             'request',
